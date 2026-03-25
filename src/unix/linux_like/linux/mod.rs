@@ -3986,7 +3986,7 @@ f! {
         sock_filter { code, jt, jf, k }
     }
 
-    #[cfg(target_env = "gnu")]
+    #[cfg(any(target_env = "gnu", target_os = "runixos"))]
     pub fn SUN_LEN(s: crate::sockaddr_un) -> usize {
         offset_of!(crate::sockaddr_un, sun_path) + crate::strlen(s.sun_path.as_ptr())
     }
@@ -4408,7 +4408,7 @@ cfg_if! {
     } else if #[cfg(any(target_env = "musl", target_env = "ohos"))] {
         mod musl;
         pub use self::musl::*;
-    } else if #[cfg(target_env = "gnu")] {
+    } else if #[cfg(any(target_env = "gnu", target_os = "runixos"))] {
         mod gnu;
         pub use self::gnu::*;
     }

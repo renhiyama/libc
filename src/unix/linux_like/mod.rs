@@ -948,7 +948,7 @@ pub const TCP_CONGESTION: c_int = 13;
 pub const TCP_MD5SIG: c_int = 14;
 cfg_if! {
     if #[cfg(all(
-        target_os = "linux",
+        any(target_os = "linux", target_os = "runixos"),
         any(target_env = "gnu", target_env = "musl", target_env = "ohos")
     ))] {
         // WARN: deprecated
@@ -2186,7 +2186,7 @@ cfg_if! {
     if #[cfg(target_os = "emscripten")] {
         mod emscripten;
         pub use self::emscripten::*;
-    } else if #[cfg(target_os = "linux")] {
+    } else if #[cfg(any(target_os = "linux", target_os = "runixos"))] {
         mod linux;
         pub use self::linux::*;
         mod linux_l4re_shared;
