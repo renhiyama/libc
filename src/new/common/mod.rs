@@ -23,6 +23,7 @@ pub(crate) mod bsd;
     target_os = "emscripten",
     target_os = "l4re",
     target_os = "linux",
+    target_os = "runixos",
 ))]
 pub(crate) mod linux_like;
 

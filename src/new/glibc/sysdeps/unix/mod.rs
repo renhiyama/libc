@@ -2,5 +2,5 @@
 //!
 //! <https://github.com/bminor/glibc/tree/master/sysdeps/unix>
 
-#[cfg(target_os = "linux")]
+#[cfg(any(target_os = "linux", target_os = "runixos"))]
 pub(crate) mod linux;
